@@ -1,0 +1,179 @@
+<!DOCTYPE html>{% load static %}
+<html>
+<style>
+    .navigation-bar {
+        position: fixed;
+        width: 0px;
+        visibility: hidden;
+        height: 100%;
+        z-index: 99;
+        background-color: rgba(7, 44, 27, 0.877);
+    }
+    
+    .profile-image {
+        width: 100%;
+    }
+
+    .dashButton {
+        width: 300px;
+        display: flex;
+        height: 40px;
+        cursor: pointer;
+        align-items: center;
+        background-color: rgba(0, 0, 128, 0);
+    }
+    .dashButton :hover {
+      background-color: rgba(5, 29, 18, 0.24);
+      width: 300px;
+      display: flex;
+      height: 40px;
+      cursor: pointer;
+      padding-left: 50px;
+      align-items: center;
+      left: 0px;
+      text-decoration: none;
+    }
+
+    .div-text {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    .card-icons {
+      width: 15px;
+      height: 15px;
+      margin-right: 10px;
+    }
+
+</style>
+
+<!--body-->
+
+<body>
+    <div id="navigationBar" class="navigation-bar">
+        <div class="container-fluid">
+            <div class="row" style="margin-top: 40px;">
+                <div class="col-12" ml-auto mr-auto style="display: flex; justify-content: center;">
+                    <img src="{{profileImage}}" class="rounded-circle" alt="Cinque Terre" style="width: 80px; height: 80px; object-fit: cover;">
+                </div>
+                <div class="col-12" style="justify-content: center; align-items: center; display: flex;margin-top: 5px;">
+                    <a style="color: rgb(194, 194, 194);font-size: small; ">{{name}} {{surname}}</a>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <!-- home -->
+        <div id="homeButton" onclick="selectButton(this)" class=" dashButton" style="margin-top: 50px;"> 
+            
+            <a  class="div-text" style="color: rgb(194, 194, 194);font-size: small; padding-left: 50px;"><img class="card-icons" src="{% static 'svg/house.svg' %}">Home</a>
+        </div>
+
+         <!-- my stands -->
+         <div id="myStandButton" class=" dashButton" onclick="selectButton(this)">
+            <a class="div-text" style="color: rgb(194, 194, 194);font-size: small; padding-left: 50px;"><img class="card-icons" src="{% static 'svg/stand.svg' %}">My Stands</a>
+        </div>
+
+         <!-- News Feed-->
+         <div id="feedButton" onclick="selectButton(this)" class=" dashButton" >
+            <a  class="div-text" style="color: rgb(194, 194, 194);font-size: small; padding-left: 50px; "><img class="card-icons" src="{% static 'svg/rss.svg' %}">News Feed</a>
+        </div>
+
+        <!-- Residential Stands-->
+        <div id="standsButton" onclick="selectButton(this)" class=" dashButton" >
+            <a class="div-text" style="color: rgb(194, 194, 194);font-size: small; padding-left: 50px; "><img class="card-icons" src="{% static 'svg/building.svg' %}">Residential Stands</a>
+        </div>
+
+        <!-- Settings-->
+        <div id="settingButton" onclick="selectButton(this)" class=" dashButton">
+            <a class="div-text" style="color: rgb(194, 194, 194);font-size: small; padding-left: 50px;"><img class="card-icons" src="{% static 'svg/equalizer.svg' %}">Settings</a>
+        </div>
+
+         
+        <!-- dashboard-->
+        <div class="dashButton"  style="margin-top: 5px; bottom: 0px; position: absolute; background-color: rgba(46, 59, 22, 0.842);" onclick="logout()">
+            <a  class="div-text" style="color: rgb(194, 194, 194);font-size: small; padding-left: 50px;">Logout</a>
+        </div>
+    </div>
+
+
+    <!-- script -->
+    <script>
+
+        selectButton(document.getElementById("homeButton"));
+
+        function logout(){
+            document.location.replace("/logout")
+        }
+
+        function selectButton(obj){
+            removeSelections()
+            //set background of object 
+            var button = obj ;
+            obj.style.backgroundColor = "rgba(5, 29, 18, 0.877)";
+
+            //set page to display
+            switch (obj.id){
+                case "homeButton" :
+                    loadPage("/home")
+                    break;
+                case "myStandButton" :
+                    loadPage("/login")
+                    break;
+            }
+        }
+
+        function loadPage(url){
+            var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            // Typical action to be performed when the document is ready: 
+                            document.getElementById("port").innerHTML = xhttp.responseText;
+                        }
+                    };
+                    xhttp.open("GET", url, true);
+                    xhttp.send();
+        }
+
+        function removeSelections(){
+            document.getElementById("homeButton").style.backgroundColor = "rgba(255, 222, 173, 0)" ;
+            document.getElementById("myStandButton").style.backgroundColor = "rgba(255, 222, 173, 0)" ;
+            document.getElementById("feedButton").style.backgroundColor = "rgba(255, 222, 173, 0)" ;
+            document.getElementById("standsButton").style.backgroundColor = "rgba(255, 222, 173, 0)" ;
+            document.getElementById("settingButton").style.backgroundColor = "rgba(255, 222, 173, 0)" ;
+        }
+
+        //global variables
+        var navigationBarWidth = 0;
+
+        //launch 
+        NavigationCalled();
+
+        function NavigationCalled() {
+            var navigationBar = document.getElementById("navigationBar");
+
+            //extend if 0
+            if (navigationBarWidth == 0) {
+                var interval = setInterval(slideRight, 1);
+            }
+
+            //slide right 
+            function slideRight() {
+                navigationBar.style.visibility = "visible";
+                if (navigationBarWidth == 300) {
+                    clearInterval(interval);
+                } else {
+                    navigationBarWidth += 10;
+                    navigationBar.style.width = navigationBarWidth + 'px';
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

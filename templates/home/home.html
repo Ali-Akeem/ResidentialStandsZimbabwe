@@ -1,0 +1,153 @@
+{% extends 'base.html' %}{% load static %}
+
+<style>
+    .card {
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    card {
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+</style>
+
+{% block style %}
+<style>
+    .card {
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+
+    .homeGrid {
+        display: grid;
+        grid-template-columns: 25% 25% 50%;
+        grid-template-rows: 1fr 1.2fr;
+    }
+
+    .list-group-item {
+        font-size: small;
+    }
+
+    .card-text {
+        font-size: small;
+    }
+
+    .card-header {
+      align-items: center;
+      display: flex;
+      font-size: small;
+      justify-content: center;
+    }
+
+    .card-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: x-large;
+    }
+
+    .card-icons {
+      width: 15px;
+      height: 15px;
+      margin-right: 5px;
+    }
+
+    .list-group-item {
+      width: 100%;
+      height: 45px;
+      padding:0;  
+    }
+
+    .list-group-item :hover{
+      background-color: rgba(0, 128, 0, 0.247);
+      cursor: pointer;
+    }
+
+    .inner-list-btn{
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      padding:0;
+    }
+
+    .pie {
+        width: 120px;
+        height: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: conic-gradient(green 64%, red 17%, red);
+        border-radius: 50%
+    }
+
+</style> 
+
+</style>
+{% endblock  %}
+
+
+{% block body %}
+
+<!-- verification -->
+<div class="homeGrid">
+  {% if verified %}
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">
+          <img class="card-icons" src="{% static 'svg/check.svg' %}">
+          Verification</div>
+        <div class="card-body">
+          <h5 class="card-title">Account is verified</h5>
+          <h style="display: flex; align-items: center; justify-content: center;">id : ({{verificationCode}})</h>
+        </div>
+      </div>
+  {% else %}
+
+
+  <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+    <div class="card-header">
+      <img class="card-icons" src="{% static 'svg/triangle.svg' %}">
+      Verification</div>
+    <div class="card-body">
+      <h5 class="card-title">Account is not verified</h5>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Credit -->
+  <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <div class="card-header"><img class="card-icons" src="{% static 'svg/dollar.svg' %}">Credit</div>
+    <div class="card-body">
+      <h5 class="card-title">{{credit}}</h5>
+      <p class="card-text">Credit is generally defined as a contractual agreement in which a borrower receives something of value now and agrees to repay the lender at a later date</p>
+    </div>
+  </div>
+
+  <!-- stands -->
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      <img class="card-icons" src="{% static 'svg/home.svg' %}">
+      Stands
+    </div>
+    <ul class="list-group list-group-flush">
+      {% for data in userStands %}
+          <li class="list-group-item"><h class="inner-list-btn">{{data.address}}</h></li>
+      {% endfor  %}
+    </ul>
+  </div>
+
+  <div class="card mb-3" style="grid-column: 1/3;">
+    <img src="{% static 'png/africa.jpg' %}" class="card-img-top" style="height: 50px; object-fit: cover;">
+    <div class="card-body">
+      <h5 class="card-title">{{standsCount}} (Active stands)</h5>
+      <p class="card-text">“Bringing great people onto your team is about demonstrating that size really doesn't matter – people do.”</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+
+</div>
+
+
+{% endblock %}

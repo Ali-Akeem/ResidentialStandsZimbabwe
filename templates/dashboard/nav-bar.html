@@ -1,0 +1,85 @@
+<!DOCTYPE html> {% load static %}
+<style>
+    .toolbar {
+        position: fixed;
+        height: 60px;
+        background-color: white;
+        width: 100%;
+        padding : 0 ;
+        display: grid;
+        padding-left: 300px;
+        grid-template-columns: 45% 10% 10% 10% 25%;
+    }
+
+    .header-text {
+        padding-left: 20px;
+        color: green;
+        justify-content: left;
+        align-items: center;
+        display: flex;
+    }
+
+    .toolbar-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: small;
+        border-color: rgb(245, 243, 243);
+        border-right : 0.5pt solid rgb(226, 226, 226);
+  
+    }
+
+    .toolbar-button-disabled {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: small;
+        border-color: rgb(245, 243, 243);
+        border-right : 0.5pt solid rgb(226, 226, 226);
+  
+    }
+
+
+    .toolbar-button :hover{
+        background-color: rgba(199, 154, 57, 0.555);
+        cursor: pointer;
+    }
+
+    .start {
+        border-left : 0.5pt solid rgb(226, 226, 226);
+    }
+
+    .innerText {
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+
+
+
+</style>
+    <body>
+        <div class="toolbar">
+            <div class="header-text">
+                Ministry of Lands Zimbabwe
+            </div>
+            <div class="toolbar-button start">
+                <h class="innerText">Downloads</h>
+            </div>
+            <div class="toolbar-button">
+                <h class="innerText">Notices</h>
+            </div>
+            <div class="toolbar-button">
+                <h class="innerText">Developers</h>
+            </div>
+            <div class="toolbar-button-disabled" >
+                <h id="test">Residential Stands Zimbabwe</h>
+                <img  src="{% static '/png/logo.png' %}" style="width: 30px; height: 30px; margin-left: 5px;">
+            </div>
+        </div>
+
+
+    </body>
+</html>
