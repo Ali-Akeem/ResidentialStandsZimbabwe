@@ -113,7 +113,6 @@
         function selectButton(obj){
             removeSelections()
             //set background of object 
-            var button = obj ;
             obj.style.backgroundColor = "rgba(5, 29, 18, 0.877)";
 
             //set page to display
@@ -122,7 +121,7 @@
                     loadPage("/home")
                     break;
                 case "myStandButton" :
-                    loadPage("/login")
+                    loadPage("/myStands")
                     break;
             }
         }

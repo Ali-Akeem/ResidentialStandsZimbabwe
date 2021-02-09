@@ -133,7 +133,7 @@
     </div>
     <ul class="list-group list-group-flush">
       {% for data in userStands %}
-          <li class="list-group-item"><h class="inner-list-btn">{{data.address}}</h></li>
+          <li class="list-group-item"><h class="inner-list-btn" onclick="loadPageWithData('standDetail/','{{data.address}}')">{{data.address}}</h></li>
       {% endfor  %}
     </ul>
   </div>

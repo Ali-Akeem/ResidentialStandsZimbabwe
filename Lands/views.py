@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import userData , stands
+from .models import userData , stands , standImage
 from django.contrib.auth.models import User
+from time import gmtime, strftime
 
 # Create your views here.
 def dashboard_page(request):
@@ -38,6 +39,26 @@ def home_page(request):
         "userStands" : userStands,
         "credit" : user.credit,
         "standsCount" : len(stands.objects.filter(purchased=False))
-    
     }
     return render(request,'home/home.html',context)
+
+def myStands_page(request):
+    #user object 
+    user = (userData.objects.get(username=User.objects.get(username=request.user.username)))
+    print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+    #userStands = stands.objects.get(owner=user)
+    userStands = stands.objects.filter(owner=user)
+    context = {
+        "userStands" : userStands,
+        "time" : strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    }
+    return render(request,"myStands/myStands.html",context)
+
+
+def standDetail_page(request):
+    stand  = request.GET.get("variable1")
+    print(stands.objects.get(address=stand).measurements)
+    context = {
+        "data" : stands.objects.get(address=stand)
+    }
+    return render(request,"myStands/standDetail.html" , context)

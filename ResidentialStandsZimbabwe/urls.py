@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
-from Lands.views import dashboard_page , home_page
+from Lands.views import dashboard_page , home_page , myStands_page , standDetail_page
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -28,6 +28,12 @@ urlpatterns = [
 
     #home 
     path('home/',home_page,name="home"),
+
+    #my stands
+    path('myStands/',myStands_page,name="myStands"),
+
+    #standDetail
+    path('standDetail/',standDetail_page,name='standDetail')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block style %}
+<style>
+    .data {
+        display: grid;
+        grid-template-columns: 70% 10%;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .form-control {
+        margin-top: 5px;
+        font-size: small;
+    }
+
+    .data-header {
+        margin-top: 20px;
+        font-size: small;
+        color: gray;
+        padding-left: 10px;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="data">
+    <div class="card">
+        <div class="card-body">
+            <h style="margin-left: 10px;">{{data.address}}</h>
+            <br>
+            <h class="data-header">Owner</h>
+            <input class="form-control" type="text" placeholder="{{data.owner.name}} {{data.owner.surname}}" aria-label="Disabled input example" disabled>
+            <h class="data-header">Price</h>
+            <input class="form-control" type="text" placeholder="{{data.price}}"  aria-label="" disabled>
+            <h class="data-header">Developer</h>
+            <input class="form-control" type="text" placeholder="{{data.developer}}" aria-label="Disabled input example" disabled>
+            <h class="data-header">Purchased</h>
+            <input class="form-control" type="text" placeholder="{{data.purchased}}" aria-label="Disabled input example" disabled>
+            <h class="data-header">Stage</h>
+            <input class="form-control" type="text" placeholder="{{data.stage}}" aria-label="Disabled input example" disabled>
+            <h class="data-header">Measurements</h>
+            <input class="form-control" type="text" placeholder="{{data.measurements}}" aria-label="Disabled input example" disabled>
+            <h class="data-header">Information</h>
+            <input class="form-control" type="text" placeholder="{{data.information}}" aria-label="Disabled input example" disabled>
+        </div>
+      </div>
+      
+</div>
+{% endblock %}

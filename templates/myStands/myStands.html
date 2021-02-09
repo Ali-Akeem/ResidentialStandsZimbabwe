@@ -1,1 +1,61 @@
-my stands
+{%  extends 'base.html' %}
+
+<!--styles-->
+{% block style %}
+   <style>
+       .stands-header {
+           margin-left: 20px;
+           margin-top: 20px;
+           color: rgb(104, 104, 104);
+       }
+
+       .wrapper {
+           display: grid;
+           grid-template-columns: 1fr ;
+           height: 100%;
+           overflow-y: scroll;  
+           margin-top: 10px;
+       }
+
+       .wrapper > div{
+           margin-left: 20px;
+           margin-top: 10px;
+       }
+
+       
+   </style>
+{% endblock  %}
+
+<!-- body -->
+{% block body %}
+<script>
+    console.log("whats happening");
+</script>
+<div class="wrapper">
+{% for stand in userStands%}
+<div class="card mb-3" style="max-width: 640px; margin-left: 20px; margin-top: 20px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ stand.image.url}}" alt="..." style="height: 220px; object-fit: cover;">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title" style="margin-left: 60px; font-size: small;">{{stand.address}}</h5>
+          <p class="card-text" style="margin-left: 60px; font-size: small;">
+            You purchased this stand for {{stand.price}} on {{stand.datePosted}} from {{stand.developer}}, it is now {{stand.stage}}. Stand is registered in {{stand.owner.name}} {{stand.owner.surname}}'s' name
+          </p>
+          <p class="card-text" style="margin-left: 60px; font-size: small;"><small class="text-muted">Last updated {{time}}</small></p>
+          <button type="button" class="btn btn-primary" style="margin-left: 60px; font-size: small;"  onclick="showStandDetail('{{stand.address}}')">More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>>
+{% endblock %}
