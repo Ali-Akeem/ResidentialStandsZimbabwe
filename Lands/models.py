@@ -17,6 +17,15 @@ class userData(models.Model):
     credit = models.TextField(default="ZWL$0,00")
 
 
+class developer(models.Model):
+    registrationNumber = models.IntegerField(primary_key=True, null=False , auto_created=True, serialize=True)
+    name = models.TextField(null=False)
+    location = models.TextField(null=False)
+    contactDetails = models.TextField(null=False)
+    dateJoined = models.TextField(default="dd/mm/yyyy")
+    standsSold = models.IntegerField(default=0)
+    avaragePricing = models.TextField(default=0)
+    rating = models.IntegerField(default=0)
 class stands(models.Model):
     owner = models.ForeignKey(userData,on_delete=models.CASCADE,default=None)
     address = models.TextField(primary_key=True)
@@ -24,7 +33,7 @@ class stands(models.Model):
     price = models.TextField()
     stage =models.TextField(default="Stands released")
     image = models.ImageField(default="none.jpg", upload_to="standImages/", null=True)
-    developer = models.TextField(default="Mopold Holdins")
+    developer = models.ForeignKey(developer,on_delete=models.CASCADE, default=None)
     information = models.TextField(default="No information is set here")
     sitePlan = models.FileField(upload_to="docs/sitePlan/",default="img/notset")
     measurements = models.TextField(default="200 square metres")
@@ -34,3 +43,6 @@ class standImage(models.Model):
     image = models.ImageField(upload_to="standImages/")
     stand = models.ForeignKey(stands,on_delete=models.CASCADE)
     datePosted = models.TextField(default="mm/dd/yyyy")
+
+
+

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}{%load static %}
+{% block style %}
+<style>
+    .wrapper {
+        display: grid;
+        grid-template-columns: 25% 25% 50%;
+        margin-top: 20px;
+        overflow-y: scroll;
+
+    }
+
+    .wrapper > div{
+       margin-left: 20px;
+       margin-top: 20px;
+    }
+
+    .card-title {
+      font-size: small;
+    }
+
+    .card-text {
+        font-size: small;
+    }
+
+    .btn {
+        font-size: small;
+    }
+
+</style>
+{% endblock %}
+{% block body %}
+<div class="wrapper">
+
+    <form method="POST" class="d-flex" style="grid-column: 1/4; width: 480px; margin-left: 20px; margin-top: 5px;">{% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 400px;">
+        <button class="btn btn-outline-primary" type="submit" style="margin-left: 10px;">Search</button>
+    </form>
+
+    {% for stand in stands %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{stand.image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{stand.address}}</h5>
+          <p class="card-text">{{stand.developer.name}} is developing this land, it was posted on {{stand.datePosted}} and is going for {{stand.price}}</p>
+          <a href="#" class="btn btn-warning">Inquire</a>
+        </div>
+      </div>
+      {% endfor %}
+</div>
+{% endblock %}

@@ -45,7 +45,6 @@ def home_page(request):
 def myStands_page(request):
     #user object 
     user = (userData.objects.get(username=User.objects.get(username=request.user.username)))
-    print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
     #userStands = stands.objects.get(owner=user)
     userStands = stands.objects.filter(owner=user)
     context = {
@@ -53,11 +52,32 @@ def myStands_page(request):
         "time" : strftime("%Y-%m-%d %H:%M:%S", gmtime())
     }
     return render(request,"myStands/myStands.html",context)
+    
+
+def residential_stands_page(request):
+    print(request.method)
+    if (request.method == "GET"):
+        print("Get")
+        user = (userData.objects.get(username=User.objects.get(username=request.user.username)))
+        #userStands = stands.objects.get(owner=user)
+        standsAll = stands.objects.filter(purchased=False)
+        context = {
+            "stands" : standsAll,
+        }
+        return render(request,"residentialStands/residentialStands.html",context)
+    else :
+        print("Post")
+        user = (userData.objects.get(username=User.objects.get(username=request.user.username)))
+        #userStands = stands.objects.get(owner=user)
+        standsAll = stands.objects.filter(purchased=False)
+        context = {
+            "stands" : standsAll,
+        }
+        return render(request,"residentialStands/residentialStands.html")
 
 
 def standDetail_page(request):
     stand  = request.GET.get("variable1")
-    print(stands.objects.get(address=stand).measurements)
     context = {
         "data" : stands.objects.get(address=stand)
     }
