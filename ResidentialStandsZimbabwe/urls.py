@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
-from Lands.views import dashboard_page , home_page , myStands_page , standDetail_page , residential_stands_page
+from Lands.views import dashboard_page , home_page, celebrate_page ,confirm_purchase_page, myStands_page , focus_stand_page , standDetail_page , residential_stands_page
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -36,7 +36,16 @@ urlpatterns = [
     path('standDetail/',standDetail_page,name='standDetail'),
 
     #residential stands 
-    path('residentialStands/', residential_stands_page,name="residential_stands")
+    path('residentialStands/', residential_stands_page,name="residential_stands"),
+
+    #focus stand
+    path('focusStand/', focus_stand_page,name="focus_stands"),
+
+    #confirm purchase
+    path('confirmPurchase/', confirm_purchase_page,name="confirm_purchase"),
+
+    #celebrate purchase
+    path('celebrate/', celebrate_page,name="celebrate")
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

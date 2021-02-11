@@ -18,6 +18,7 @@
     </head>
 
     {% block style %}
+    <style></style>
     {% endblock  %}
 
     <body>
@@ -26,6 +27,11 @@
                 removeSelections()
                 
                 loadPageWithData('standDetail/',obj);
+            }
+
+            function searchStand(){
+                var searchValue = document.getElementById("searchText").value ;
+                loadPageWithData('residentialStands/',searchValue)
             }
 
             function loadPageWithData(url,parametre){
@@ -38,7 +44,8 @@
                     };
                     xhttp.open("GET", url+'?variable1='+parametre, true);
                     xhttp.send();
-        }
+            }
+            
         </script>
              <!--authentication check-->
         {% if user.is_authenticated == False %}

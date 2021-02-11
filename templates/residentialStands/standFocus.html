@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block style %}
+<style>
+    .data {
+        display: grid;
+        grid-template-columns: 70% 10%;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .form-control {
+        margin-top: 5px;
+        font-size: small;
+    }
+
+    .data-header {
+        margin-top: 20px;
+        font-size: small;
+        color: gray;
+        padding-left: 10px;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="wrapper" style="height: 100%; overflow-y: scroll;">
+<div class="card text-dark bg-light mb-3" style="margin-left: 20px;margin-right: 400px; margin-top: 20px;" >
+    <div class="card-header">Stand Information</div>
+            <div class="card-body">
+                <h class="data-header">Address</h>
+                <input class="form-control" type="text" placeholder="{{data.address}}" aria-label="Disabled input example" disabled>
+                <h class="data-header">Owner</h>
+                <input class="form-control" type="text" placeholder="{{data.owner.name}} {{data.owner.surname}}" aria-label="Disabled input example" disabled>
+                <h class="data-header">Price</h>
+                <input class="form-control" type="text" placeholder="{{data.price}}"  aria-label="" disabled>
+                <h class="data-header">Developer</h>
+                <input class="form-control" type="text" placeholder="{{data.developer.name}}" aria-label="Disabled input example" disabled>
+                <h class="data-header">Stage</h>
+                <input class="form-control" type="text" placeholder="{{data.stage}}" aria-label="Disabled input example" disabled>
+                <h class="data-header">Date Posted</h>
+                <input class="form-control" type="text" placeholder="{{data.datePosted}}" aria-label="Disabled input example" disabled>
+                <h class="data-header">Measurements</h>
+                <input class="form-control" type="text" placeholder="{{data.measurements}}" aria-label="Disabled input example" disabled>
+                <h class="data-header">Information</h>
+                <input class="form-control" type="text" placeholder="{{data.information}}" aria-label="Disabled input example" disabled>
+            </div>   
+</div>
+
+<div class="card text-dark bg-light mb-3" style="margin-left: 20px;margin-right: 400px; margin-top: 20px;" >
+    <div class="card-header">Developer Information</div>
+            <div class="card-body">
+                <h class="data-header">Organisation Name</h>
+                <input class="form-control" type="text" placeholder="{{data.developer.name}}" aria-label="Disabled input example" disabled>
+                <h class="data-header">Registration Number</h>
+                <input class="form-control" type="text" placeholder="{{data.developer.registrationNumber}} {{data.owner.surname}}" aria-label="Disabled input example" disabled>
+                <h class="data-header">Office Location</h>
+                <input class="form-control" type="text" placeholder="{{data.developer.location}}"  aria-label="" disabled>
+                <h class="data-header">Contact Details</h>
+                <input class="form-control" type="text" placeholder="{{data.developer.contactDetails}}"  aria-label="" disabled>
+            </div>   
+</div>
+
+<div class="card text-dark bg-light mb-3" style="margin-left: 20px;margin-right: 400px; margin-top: 20px;" >
+    <div class="card-header">Purchase</div>
+            <div class="card-body">
+                <h class="data-header">Organisation Name</h>
+                <input class="form-control" type="text" placeholder="{{data.developer.name}}" aria-label="Disabled input example" disabled>
+                <h class="data-header">Registration Number</h>
+                <input class="form-control" type="text" placeholder="{{data.developer.registrationNumber}} {{data.owner.surname}}" aria-label="Disabled input example" disabled>
+                <h class="data-header">Office Location</h>
+                <input class="form-control" type="text" placeholder="{{data.developer.location}}"  aria-label="" disabled>
+                <h class="data-header">Contact Details</h>
+                <input class="form-control" type="text" placeholder="{{data.developer.contactDetails}}"  aria-label="" disabled>
+            </div>   
+</div>
+
+<div class="card text-dark bg-light mb-3" style="margin-left: 20px;margin-right: 400px; margin-top: 20px;" >
+    <div class="card-header">Purchase</div>
+            <div class="card-body">
+                <input class="form-control" type="text" placeholder="Purchases are gorvened by Zimbabwe's Real Estate Laws and Regulations" aria-label="Disabled input example" disabled>
+            </div>  
+            <button type="button" onclick="loadPageWithData('confirmPurchase/','{{data.address}}')" class="btn btn-success" style="font-size: small; width: 200px; margin-bottom: 20px; margin-left: 20px;">Purchase {{data.price}}</button> 
+</div>
+<br>
+<br>
+<br>
+<br>
+</div>
+{% endblock %}

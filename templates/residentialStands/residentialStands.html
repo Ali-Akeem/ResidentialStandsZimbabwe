@@ -31,10 +31,10 @@
 {% block body %}
 <div class="wrapper">
 
-    <form method="POST" class="d-flex" style="grid-column: 1/4; width: 480px; margin-left: 20px; margin-top: 5px;">{% csrf_token %}
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 400px;">
-        <button class="btn btn-outline-primary" type="submit" style="margin-left: 10px;">Search</button>
-    </form>
+    <div class="d-flex" style="grid-column: 1/4; width: 480px; margin-left: 20px; margin-top: 5px;">
+        <input id="searchText" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 400px;">
+        <button class="btn btn-outline-primary" onclick="searchStand()" style="margin-left: 10px;">Search</button>
+    </div>
 
     {% for stand in stands %}
     <div class="card" style="width: 18rem;">
@@ -42,9 +42,12 @@
         <div class="card-body">
           <h5 class="card-title">{{stand.address}}</h5>
           <p class="card-text">{{stand.developer.name}} is developing this land, it was posted on {{stand.datePosted}} and is going for {{stand.price}}</p>
-          <a href="#" class="btn btn-warning">Inquire</a>
+          <a  onclick=" loadPageWithData('focusStand/','{{stand.address}}')" class="btn btn-warning">Inquire</a>
         </div>
       </div>
       {% endfor %}
+    
 </div>
 {% endblock %}
+
+

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import userData , stands , standImage
 from django.contrib.auth.models import User
 from time import gmtime, strftime
+from . import searchAlgorithms
 
 # Create your views here.
 def dashboard_page(request):
@@ -55,29 +56,52 @@ def myStands_page(request):
     
 
 def residential_stands_page(request):
-    print(request.method)
     if (request.method == "GET"):
-        print("Get")
+        searchParametre  = request.GET.get("variable1")
         user = (userData.objects.get(username=User.objects.get(username=request.user.username)))
         #userStands = stands.objects.get(owner=user)
         standsAll = stands.objects.filter(purchased=False)
-        context = {
-            "stands" : standsAll,
-        }
+        #if search parametres is not empty search stands
+        context = {} #declare before use
+        if (searchParametre != None):
+            context = searchAlgorithms.searchStand(searchParametre)     
+        else:
+            context = {
+                "stands" : standsAll,
+            }
         return render(request,"residentialStands/residentialStands.html",context)
-    else :
-        print("Post")
-        user = (userData.objects.get(username=User.objects.get(username=request.user.username)))
-        #userStands = stands.objects.get(owner=user)
-        standsAll = stands.objects.filter(purchased=False)
-        context = {
-            "stands" : standsAll,
-        }
-        return render(request,"residentialStands/residentialStands.html")
+    
 
+def focus_stand_page(request):
+    stand  = request.GET.get("variable1")
+    context = {
+        "data" : stands.objects.get(address=stand)
+    }
+    return render(request,"residentialStands/standFocus.html",context)
+
+def confirm_purchase_page(request):
+    stand  = request.GET.get("variable1")
+    context = {
+        "data" : stands.objects.get(address=stand)
+    }
+    return render(request,"residentialStands/confirmPurchase.html" , context)
+
+
+def celebrate_page(request):
+    stand  = request.GET.get("variable1")
+    item = stands.objects.get(address=stand)
+    #owner
+    item.owner = (userData.objects.get(username=User.objects.get(username=request.user.username)))
+    #purchased
+    item.purchased = True
+    #save
+    item.save()
+    return render(request,"residentialStands/celebrate.html")
 
 def standDetail_page(request):
-    stand  = request.GET.get("variable1")
+
+    #lease
+    
     context = {
         "data" : stands.objects.get(address=stand)
     }
