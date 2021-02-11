@@ -99,9 +99,8 @@ def celebrate_page(request):
     return render(request,"residentialStands/celebrate.html")
 
 def standDetail_page(request):
-
     #lease
-    
+    stand  = request.GET.get("variable1")
     context = {
         "data" : stands.objects.get(address=stand)
     }
