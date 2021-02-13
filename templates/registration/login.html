@@ -30,7 +30,15 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
+  background-image: url("{% static 'jpg/2757434.jpg' %}");
+  -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
 }
+
+
 
 .form-control:focus {
   border-color: #e49132;
@@ -66,6 +74,7 @@ h2 {
   width: 100%;
   min-height: 100%;
   padding: 20px;
+  opacity: 0.95;
 }
 
 #formContent {
@@ -173,6 +182,12 @@ input[type=password]:placeholder {
 }
 
 
+  .language-select {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+  }
+
 
 </style>
 <!-- body -->
@@ -204,8 +219,50 @@ input[type=password]:placeholder {
         </div>
       </div>
 
-</body>
 
+
+      <div class="language-select">
+        <div class="nav-item dropdown" onclick="languages()" >
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+            <img src="{% static 'flags/US.png' %}" style="margin-right: 10px;"><h id="selectedLanguage">English(US)</h>
+          </a>
+          <div id="languageBlock" class="dropdown-menu" aria-labelledby="navbarDropdown" style="display: none; background-color: rgba(255, 255, 255, 0.658);">
+            <a class="dropdown-item" href="#"><img src="{% static 'svg/Zimbabwe.svg' %}" style="margin-right: 10px; width: 20px;">Shona</a>
+            <a class="dropdown-item" href="#"><img src="{% static 'svg/Zimbabwe.svg' %}" style="margin-right: 10px; width: 20px;">Ndebele</a>
+          </div>
+      </div>
+</body>
+<script>
+     function languages(){
+        var languagesBlock = document.getElementById("languageBlock")
+  
+        if (languagesBlock.style.display == "none"){
+           unfade(languagesBlock)
+        }
+        else {
+          languagesBlock.style.display = "none"
+        }
+        
+     }
+
+     function setSelectedLanguage(){
+       document.getElementById("selectedLanguage")
+     }
+
+     function unfade(element) {
+      var op = 0.01;  // initial opacity
+      element.style.opacity = op ;
+      element.style.display = 'block';
+      var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.5;
+    }, 10);
+}
+</script>
 
 
  
