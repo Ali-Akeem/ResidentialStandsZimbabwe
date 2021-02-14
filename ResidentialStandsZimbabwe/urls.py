@@ -18,6 +18,7 @@ from django.urls import path , include
 from Lands.views import dashboard_page , home_page, celebrate_page ,confirm_purchase_page, myStands_page , focus_stand_page , standDetail_page , residential_stands_page
 from django.conf.urls.static import static
 from django.conf import settings
+from Lands.views import news_feed
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -45,7 +46,11 @@ urlpatterns = [
     path('confirmPurchase/', confirm_purchase_page,name="confirm_purchase"),
 
     #celebrate purchase
-    path('celebrate/', celebrate_page,name="celebrate")
+    path('celebrate/', celebrate_page,name="celebrate"), 
+    
+
+    #feed page
+    path('feed/',news_feed, name="feed" )
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

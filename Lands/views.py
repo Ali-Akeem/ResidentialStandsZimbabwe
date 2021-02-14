@@ -3,6 +3,8 @@ from .models import userData , stands , standImage
 from django.contrib.auth.models import User
 from time import gmtime, strftime
 from . import searchAlgorithms
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 def dashboard_page(request):
@@ -105,3 +107,15 @@ def standDetail_page(request):
         "data" : stands.objects.get(address=stand)
     }
     return render(request,"myStands/standDetail.html" , context)
+
+
+def news_feed(request):
+  
+    
+    context = {
+        "msg" : "hello" ,
+        "stand" : stands.objects.all()[0]
+    }
+
+    return render(request,"feedPage/feed.html" , context)
+

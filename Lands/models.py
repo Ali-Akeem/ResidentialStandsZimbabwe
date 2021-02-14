@@ -26,6 +26,7 @@ class developer(models.Model):
     standsSold = models.IntegerField(default=0)
     avaragePricing = models.TextField(default=0)
     rating = models.IntegerField(default=0)
+
 class stands(models.Model):
     owner = models.ForeignKey(userData,on_delete=models.CASCADE,default=None)
     address = models.TextField(primary_key=True)
@@ -43,6 +44,16 @@ class standImage(models.Model):
     image = models.ImageField(upload_to="standImages/")
     stand = models.ForeignKey(stands,on_delete=models.CASCADE)
     datePosted = models.TextField(default="mm/dd/yyyy")
+
+class leases(models.Model):
+    stand = models.ForeignKey(stands,on_delete=models.CASCADE)
+    developer = models.ForeignKey(developer,on_delete=models.CASCADE)
+    dateIssued = models.TextField(default="dd/mm/yy")
+    agreementCode = models.IntegerField(auto_created=True)
+    dateSigned = models.TextField(default="dd/mm/yyyy")
+    governementLaw = models.TextField(default="Zimbabwe: Real Estate Laws and Regulations")
+
+
 
 
 
