@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from Lands.views import news_feed
 from Lands.views import developers
+from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -54,6 +55,9 @@ urlpatterns = [
 
     #maps
     path("markers/", include("markers.urls")),
+
+    # include 
+    path('', include('payments.urls')),
 
     #feed page
     path('feed/',news_feed, name="feed" )

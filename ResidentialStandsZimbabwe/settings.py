@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Lands',
-    'markers'
+    'markers',
+    'payments'
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,10 @@ LOGOUT_REDIRECT_URL = '/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
+
+PAYTM_MERCHANT_ID = '<your_merchant_id>'
+PAYTM_SECRET_KEY = '<your_paytm_secret_key>'
+PAYTM_WEBSITE = 'WEBSTAGING'
+PAYTM_CHANNEL_ID = 'WEB'
+PAYTM_INDUSTRY_TYPE_ID = 'Retail'
+
