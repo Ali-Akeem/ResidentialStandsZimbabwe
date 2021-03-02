@@ -39,6 +39,8 @@ class stands(models.Model):
     sitePlan = models.FileField(upload_to="docs/sitePlan/",default="img/notset")
     measurements = models.TextField(default="200 square metres")
     datePosted = models.TextField(default="dd/mm/yyyy")
+    feedHead = models.TextField(default="No new yet")
+    feedBody = models.TextField(default="null")
 
 class standImage(models.Model):
     image = models.ImageField(upload_to="standImages/")
@@ -54,6 +56,9 @@ class leases(models.Model):
     governementLaw = models.TextField(default="Zimbabwe: Real Estate Laws and Regulations")
 
 
-
+class feed(models.Model):
+    headline = models.TextField(default="head")
+    body= models.TextField(default="body")
+    new= models.TextField(default="more")
 
 

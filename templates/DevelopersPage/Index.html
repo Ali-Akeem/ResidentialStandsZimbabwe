@@ -1,0 +1,114 @@
+<html>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <div id="wrapper">
+        <header>
+        <div class="flex">
+            <div class="logo">
+            <a href="#">RESIDENTIAL STANDS <span>ZIMBABWE</span></a>
+            </div>
+            <nav>
+            <button id="nav-toggle" class="hamburger-menu">
+                <span class="strip"></span>
+                <span class="strip"></span>
+                <span class="strip"></span>
+            </button>
+            <ul id="nav-menu-container">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Clients</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            </nav>
+        </div>
+        </header>
+    
+        <main>
+        <section class="hero-image">
+            <img src="{% static 'jpg/wallpaper.jpg' %}" alt="ABC Company Hero Image" />
+            <div class="hero-marketing-bar">
+            <h3>RESIDENTIAL STANDS ZIMBABWE</h3>
+            <h1>We are here for you, Always.</h1>
+            </div>
+        </section>
+        
+        <section class="marketing-boxes">
+            <div class="flex">
+            <div class="box">
+                <h2>Services</h2>
+                <p>We work hand in glove with the Ministry of Local Government, Public Works and National Housing and all the stands that are shown on this website have been approved by the council. Clients can view all stands that they are interested in and their prices once they create an account and stands are only secured once deposit has been paid via our various payment platforms.</p>
+                <button>More Info</button>
+            </div>
+            
+            <div class="box box2">
+                <h2>Projects</h2>
+                <p>Y'all are yet to find somethig to add right here coz idk whats supposed to go there. its so difficult and to be quite honest i dont know why im still typing. this is just about enough, so i will stop here. thank you.</p>
+                <button>More Info</button>
+            </div>
+            
+            <div class="box">
+                <h2>Clients</h2>
+                <p>We are highly skilled at what we do and we can offer the optimum solution to any given query that clients may have. We listen to our client and affordability is a primary focus of our company as we customize your account to show you stands within the budget that you provided.</p>
+                <button>More Info</button>
+            </div>
+            </div>
+        </section>
+        
+        <section class="about-us">
+                <h1>About Us</h1>
+                <p>
+                We are a team of talented individuals ready to assist you through the whole process of acquiring land. Our services will not only help you find a stand that is approved by the Council, but will also help you find a stand that suits your budget best!
+                <br/><br/>
+                We understand that one size doesn’t fit all, especially when it comes to finding the next home for you, your family or your business. We would be delighted to have a chat with you about your requirements and take you through the options that would change your dream into a reality. We pride ourselves in working closely with our clients to understand what they need and offer our expertise all within their budget.
+                </p>
+                <button>Read More</button>
+            </section>
+        
+        <section class="contact-us">
+            <h3>Have anymore questions?</h3>
+            <h1>Contact Us</h1>
+            <div class="flex">
+            <div id="map" class="map">
+                <img src="{% static 'jpg/location.jpg' %}"alt="Map" />
+            </div>
+            <div class="contact-form">
+                <address>
+                44 Clarkia Close<br/>
+                Dellsford<br/>
+                Bulawayo<br/>
+                Zimbabwe<br/>
+                residentialstandszimbabwe@gmail.com<br/>
+                TelNo: +263 292 3456789
+                </address>
+                
+                <form>
+                <input type="text" name="name" id="name" placeholder="Enter Name..." />
+                <input type="email" name="email" id="email" placeholder="Enter Email..." />
+                <input type="text" name="subject" id="subject" placeholder="Subject..." />
+                <textarea id="message">Type your message here...</textarea>
+                <button>Send</button>
+                </form>
+            </div>
+            </div>
+        </section>
+        </main>
+    
+        <footer>
+        <div class="flex">
+            <small>&copy; 2021 RSZim.  Created by CS Classof2023.</small>
+            <ul>
+            <li>
+                <a href="#"></a>
+                <img src="{% static 'jpg/facebook.jpg' %}" alt="Facebook" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                <img src="{% static 'jpg/twitter.jpg' %}" alt="Twitter" />
+                </a>
+            </li>
+            </ul>
+        </div>
+        </footer>
+    </div>
+  </html>

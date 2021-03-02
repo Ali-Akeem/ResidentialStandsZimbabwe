@@ -83,15 +83,25 @@
             <a  class="div-text" style="color: rgb(194, 194, 194);font-size: small; padding-left: 50px; "><img class="card-icons" src="{% static 'svg/rss.svg' %}">News Feed</a>
         </div>
 
-        <!-- Available Stands-->
+        <!-- Residential Stands-->
         <div id="standsButton" onclick="selectButton(this)" class=" dashButton" >
-            <a class="div-text" style="color: rgb(194, 194, 194);font-size: small; padding-left: 50px; "><img class="card-icons" src="{% static 'svg/building.svg' %}">Available Stands</a>
+            <a class="div-text" style="color: rgb(194, 194, 194);font-size: small; padding-left: 50px; "><img class="card-icons" src="{% static 'svg/building.svg' %}">Residential Stands</a>
         </div>
 
         <!-- Settings-->
         <div id="settingButton" onclick="selectButton(this)" class=" dashButton">
             <a class="div-text" style="color: rgb(194, 194, 194);font-size: small; padding-left: 50px;"><img class="card-icons" src="{% static 'svg/equalizer.svg' %}">Settings</a>
         </div>
+
+        <div id="devButton" onclick="selectButton(this)" class=" dashButton">
+            <a class="div-text" style="color: rgb(194, 194, 194);font-size: small; padding-left: 50px;"><img class="card-icons" src="{% static 'svg/equalizer.svg' %}">Developers</a>
+        </div>
+
+        <div id="mapsButton" onclick="selectButton(this)" class=" dashButton">
+            <a class="div-text" style="color: rgb(194, 194, 194);font-size: small; padding-left: 50px;"><img class="card-icons" src="{% static 'svg/equalizer.svg' %}">Maps</a>
+        </div>
+
+
 
          
         <!-- dashboard-->
@@ -126,6 +136,16 @@
                 case "standsButton":
                     loadPage("/residentialStands");
                     break;
+                case "feedButton" :
+                    loadPage("/feed");
+                    break;
+                case "devButton" :
+                    loadPage("/developer");
+                    break;
+                case "mapsButton" :
+                    loadPage("");
+                    break;
+
             }
         }
 

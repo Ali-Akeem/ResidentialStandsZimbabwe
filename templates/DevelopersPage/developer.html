@@ -1,0 +1,424 @@
+{% extends 'base.html' %}{% load static %}
+
+<style>
+    .card {
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    card {
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+</style>
+
+{% block style %}
+<style>
+    .card {
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+
+    .homeGrid {
+        display: grid;
+        grid-template-columns: 25% 25% 50%;
+        grid-template-rows: 1fr 1.2fr;
+    }
+
+    .list-group-item {
+        font-size: small;
+    }
+
+    .card-text {
+        font-size: small;
+    }
+
+    .card-header {
+      align-items: center;
+      display: flex;
+      font-size: small;
+      justify-content: center;
+    }
+
+    .card-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: x-large;
+    }
+
+    .card-icons {
+      width: 15px;
+      height: 15px;
+      margin-right: 5px;
+    }
+
+    .list-group-item {
+      width: 100%;
+      height: 45px;
+      padding:0;  
+    }
+
+    .list-group-item :hover{
+      background-color: rgba(0, 128, 0, 0.247);
+      cursor: pointer;
+    }
+
+    .inner-list-btn{
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      padding:0;
+    }
+
+    .pie {
+        width: 120px;
+        height: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: conic-gradient(green 64%, red 17%, red);
+        border-radius: 50%
+    }
+
+   .hero-image {
+    position: relative;
+    max-height: 200px;
+    overflow: hidden;
+    margin-bottom: 90px;
+}
+
+.hero-image img {
+    width: 100%;
+}
+
+.hero-marketing-bar {
+    position: absolute;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.5);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 0;
+}
+
+.hero-marketing-bar h1,
+.hero-marketing-bar h3 {
+    color: black;
+}
+
+.hero-marketing-bar h3 {
+    margin-bottom: 10px;
+}
+
+
+
+
+.contact-us {
+    background-color: #7cc488;
+    padding: 75px 0 60px;
+}
+
+.contact-us h1 {
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.contact-us h3 {
+    color:rgb(4, 92, 18)
+}
+
+.contact-us .flex {
+    justify-content: space-between;
+    max-width: 900px;
+}
+
+.map {
+    width: 600px;
+    height: 700px;
+    margin-left: 10px;
+}
+
+.contact-form {
+    width: 400px;
+    padding: 0 10px 0 50px;
+}
+
+.contact-form address {
+    color: #fff;
+    font-size: 1.05em;
+    text-align: center;
+    font-style: normal;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    display: block;
+    margin: 0 0 20px;
+    padding: 8px 12px;
+    color: #35ad5d;
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+}
+
+.contact-form textarea {
+    resize: none;
+    height: 110px;
+}
+
+.contact-form button {
+    background-color: #0f521a;
+    border: none;
+    color: #fff;
+    padding: 8px 40px;
+    float: right;
+    font-size: 1em;
+}
+
+input::placeholder {
+    color: #59b568;
+}
+/* end: contact us styles */
+
+/* start: footer styles */
+footer {
+    background-color: #4daa69;
+    padding: 75px 0 60px;
+    color: #fff;
+}
+
+footer .flex {
+    max-width: 900px;
+    justify-content: space-between;
+}
+
+footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+/* end: footer styles */
+
+/* start: media queries */
+@media (max-width: 767px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    h3 {
+        font-size: 1em;
+    }
+
+    .flex {
+        display: block;
+    }
+
+    .box {
+        width: 100%;
+        margin: 40px 0;
+        box-sizing: border-box;
+    }
+
+    .map {
+        width: 90%;
+        height: 300px;
+        margin: 0 auto 60px;
+        text-align: center;
+    }
+
+    .map img {
+        height: 100%;
+    }
+
+    .contact-form {
+        width: 80%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    footer {
+        text-align: center;
+    }
+
+    footer ul {
+        margin-top: 30px;
+    }
+}
+
+@media (min-width: 651px) {
+    nav ul {
+        display: block !important;
+    }
+}
+
+@media (max-width: 650px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    h3 {
+        font-size: 0.8em;
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #0c6017;
+        top: 100%;
+        z-index: 3;
+        width: 100%;
+    }
+
+    nav ul li {
+        display: block;
+        text-align: center;
+        margin: 10px 0;
+        padding: 15px 0 5px;
+        border-top: 1px solid #fff;
+    }
+
+    nav ul li a {
+        font-size: 1.5em;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    .hero-marketing-bar {
+        padding: 15px 0;
+    }
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    h3 {
+        font-size: 0.75em;
+    }
+
+    .hero-marketing-bar {
+        position: static;
+    }
+}
+
+
+    
+    
+</style> 
+
+</style>
+{% endblock  %}
+
+{% block body %}
+
+
+  <section class="hero-image">
+      <img src="{% static 'jpg/wallpaper.jpg' %}" alt="ABC Company Hero Image" />
+       <div class="hero-marketing-bar">
+          <h3 >RESIDENTIAL STANDS ZIMBABWE</h3>
+          <h1>We are here for you, Always.</h1>
+      </div>
+  </section>
+
+<div class="homeGrid">
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <div class="card-header">Services</div>
+    <div class="card-body">
+      <p class="card-text">We work hand in glove with the Ministry of Local Government, Public Works and National Housing and all the stands that are shown on this website have been approved by the council. Clients can view all stands that they are interested in and their prices once they create an account and stands are only secured once deposit has been paid via our various payment platforms.</p>
+      <button type="button" class="btn btn-primary" style="margin-left: 60px; font-size: small;"  onclick="showStandDetail('{{stand.address}}')">More</button>
+    </div>
+  </div>
+
+  <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <div class="card-header">Projects</div>
+    <div class="card-body">
+      <p class="card-text">Y'all are yet to find somethig to add right here coz idk whats supposed to go there. its so difficult and to be quite honest i dont know why im still typing. this is just about enough, so i will stop here. thank you.</p>
+      <button type="button" class="btn btn-primary" style="margin-left: 60px; font-size: small;"  onclick="showStandDetail('{{stand.address}}')">More</button>
+    </div>
+  </div>
+
+  <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <div class="card-header">Clients</div>
+    <div class="card-body">
+      <p class="card-text">We are highly skilled at what we do and we can offer the optimum solution to any given query that clients may have. We listen to our client and affordability is a primary focus of our company as we customize your account to show you stands within the budget that you provided.</p>
+      <button type="button" class="btn btn-primary" style="margin-left: 60px; font-size: small;"  onclick="showStandDetail('{{stand.address}}')">More</button>
+    </div>
+  </div>
+</div>
+
+<section class="contact-us">
+            <h3>Have anymore questions?</h3>
+            <h1>Contact Us</h1>
+            <div class="flex">
+            <div id="map" class="map">
+                <img src="location.jpg" alt="Map" />
+            </div>
+            <div class="contact-form">
+                <address>
+                44 Clarkia Close<br/>
+                Dellsford<br/>
+                Bulawayo<br/>
+                Zimbabwe<br/>
+                residentialstandszimbabwe@gmail.com<br/>
+                TelNo: +263 292 3456789
+                </address>
+                
+                <form>
+                <input type="text" name="name" id="name" placeholder="Enter Name..." />
+                <input type="email" name="email" id="email" placeholder="Enter Email..." />
+                <input type="text" name="subject" id="subject" placeholder="Subject..." />
+                <textarea id="message">Type your message here...</textarea>
+                <button>Send</button>
+                </form>
+            </div>
+            </div>
+        </section>
+    
+        <footer>
+        <div class="flex">
+            <small>&copy; 2021 RSZim.  Created by CS Classof2023.</small>
+            <ul>
+            <li>
+                <a href="#"></a>
+                <img src="facebook.jpg" alt="Facebook" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                <img src="twitter.jpg" alt="Twitter" />
+                </a>
+            </li>
+            </ul>
+        </div>
+        </footer>
+    </div>
+
+
+{% endblock %}

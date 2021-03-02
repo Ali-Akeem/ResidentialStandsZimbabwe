@@ -19,6 +19,7 @@ from Lands.views import dashboard_page , home_page, celebrate_page ,confirm_purc
 from django.conf.urls.static import static
 from django.conf import settings
 from Lands.views import news_feed
+from Lands.views import developers
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -47,7 +48,12 @@ urlpatterns = [
 
     #celebrate purchase
     path('celebrate/', celebrate_page,name="celebrate"), 
-    
+
+    #developer_page
+    path('developer/' ,developers, name= "developer"),
+
+    #maps
+    path("markers/", include("markers.urls")),
 
     #feed page
     path('feed/',news_feed, name="feed" )
